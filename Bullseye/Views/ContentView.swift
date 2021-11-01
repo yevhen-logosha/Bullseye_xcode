@@ -18,12 +18,12 @@ struct ContentView: View {
             Color("BackgroundColor")
                 .edgesIgnoringSafeArea(.all)
             VStack {
-                Text("🎯🎯🎯\nPut Bullseye as close as you can to".uppercased())
-                    .bold()
+                Text("🎯🎯🎯\nPut Bullseye as close as you can to".uppercased())                    .bold()
                     .kerning(2.0)
                     .multilineTextAlignment(.center)
                     .lineSpacing(4.0)
                     .font(.footnote)
+                    .foregroundColor(Color("TextColor"))
                 Text(String(game.target))
                     .kerning(-1)
                     .fontWeight(.black)
@@ -31,12 +31,14 @@ struct ContentView: View {
                 HStack {
                     Text("1")
                         .fontWeight(.bold)
+                        .foregroundColor(Color("TextColor"))
                     Slider(value: self.$sliderValue, in: 1.0...100)
+                        .foregroundColor(Color("TextColor"))
                     Text("100")
                         .fontWeight(.bold)
+                        .foregroundColor(Color("TextColor"))
                 }
                 Button(action: {
-                    print("Hello Swiftui")
                     self.alertIsVisible = true
                 }) {
                     Text("Hit me".uppercased())
@@ -66,6 +68,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .preferredColorScheme(.light)
         ContentView()
             .previewLayout(.fixed(width: 568, height: 320))
     }
